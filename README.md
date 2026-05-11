@@ -76,12 +76,12 @@ cp .env.example .env      # then edit if needed
 #    First run will open a browser to authorize.
 ```
 
-## Generate a reel
+## Generate a reel — two ways
+
+### A. Single-command pipeline (no UI, fastest to sanity-check)
 
 ```bash
 # Recommended first run — produces a finished mp4 with zero manual assets.
-# Uses Ken-Burns motion (CPU) so you can verify the full pipeline before
-# committing to a 5-10 minute video-gen step.
 python -m src.main \
     --genre motivation \
     --topic "Failure is data, not identity" \
@@ -91,6 +91,34 @@ python -m src.main \
 # Once that works, upgrade to true AI video clips (LTX-Video, GPU):
 python -m src.main --genre motivation --topic "Aaj ka effort kal ka result"
 ```
+
+### B. Agentic workflow with UI (Researcher -> Writer <-> Critic -> Producer -> human approval -> Uploader)
+
+Two processes, both local. Run each in its own terminal:
+
+```bash
+# 1. Worker — drives runs, no UI
+python -m src.orchestrator.runner
+
+# 2. Dashboard — opens http://localhost:8501
+streamlit run ui/streamlit_app.py
+```
+
+In the dashboard:
+
+- Sidebar -> pick a genre -> (optional) type a topic -> **Start run**
+- Leave the topic blank to let the **Researcher** scrape Reddit (subreddits
+  configured per-genre under `research.subreddits`) and pick an angle.
+- Watch the cards update live: Researcher -> Writer -> Critic. The Critic
+  scores 0-10 against a rubric; <7 sends the script back to the Writer with
+  feedback. Hard cap of 3 revisions.
+- The Producer then runs the heavy media pipeline. When done, the run goes
+  to **Awaiting human approval** — you see the mp4 inline with
+  Approve / Reject / Cancel buttons.
+- Approve -> Uploader pushes to YouTube via the official Data API.
+
+Both processes share `workspace/mediagen.db` (SQLite). Killing either is
+safe; restart and they pick up where they left off.
 
 Final mp4 lands in `output/`. Intermediates (script.json, per-line wav/png/mp4,
 SRT) stay in `workspace/<reel-id>/` for debugging.

@@ -37,3 +37,7 @@ google-api-python-client>=2.140
 google-auth>=2.32
 google-auth-oauthlib>=1.2
 google-auth-httplib2>=0.2
+
+# --- Orchestrator + UI ---
+streamlit>=1.36
+feedparser>=6.0

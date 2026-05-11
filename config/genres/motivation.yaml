@@ -34,3 +34,11 @@ script:
   language: hinglish
   tone: punchy, direct, "you can do this" energy
   cta: "Follow for daily push."   # appended to last line
+
+research:
+  # Public subreddits the Researcher samples for trending angles. The agent
+  # also falls back to LLM brainstorm if Reddit is unreachable.
+  subreddits:
+    - GetMotivated
+    - decidingtobebetter
+    - selfimprovement
