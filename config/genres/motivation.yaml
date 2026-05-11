@@ -1,0 +1,44 @@
+## Motivation genre — first MVP target.
+
+genre: motivation
+
+character:
+  id: arjun_v1
+  display_name: Arjun
+  # Used in the visual prompt for every shot — keeps face/clothing consistent.
+  visual_prompt: >
+    a 28 year old indian man named Arjun, short black hair, light stubble,
+    warm brown eyes, wearing a charcoal grey hoodie, cinematic lighting,
+    photorealistic, 35mm film look
+  negative_prompt: >
+    deformed, extra fingers, blurry, low quality, cartoon, anime, watermark,
+    text, logo, multiple people
+  # Optional LoRA for stronger identity lock. Drop the .safetensors here and
+  # set the path; leave null to skip.
+  lora_path: null
+  lora_weight: 0.8
+  voice_ref_wav: characters/motivation/voice_ref.wav
+
+style:
+  visual_keywords: cinematic, golden hour, shallow depth of field, vertical 9:16
+  shot_types:
+    - close-up on Arjun looking into the camera
+    - over-the-shoulder, Arjun walking through a Mumbai street at dawn
+    - wide shot, Arjun standing on a rooftop at sunrise, city skyline behind
+    - macro shot, hands writing in a notebook
+  music_mood: uplifting cinematic, slow build
+
+script:
+  hook_seconds: 3           # first line must hook within this
+  total_seconds: 30
+  language: hinglish
+  tone: punchy, direct, "you can do this" energy
+  cta: "Follow for daily push."   # appended to last line
+
+research:
+  # Public subreddits the Researcher samples for trending angles. The agent
+  # also falls back to LLM brainstorm if Reddit is unreachable.
+  subreddits:
+    - GetMotivated
+    - decidingtobebetter
+    - selfimprovement
