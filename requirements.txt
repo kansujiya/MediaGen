@@ -1,0 +1,39 @@
+# --- Core ---
+pyyaml>=6.0
+python-dotenv>=1.0
+requests>=2.31
+tqdm>=4.66
+
+# --- LLM (Ollama HTTP client, no GPU needed by Python side) ---
+ollama>=0.3.3
+
+# --- TTS (Hinglish) ---
+# XTTS-v2 via Coqui TTS. Requires PyTorch.
+TTS>=0.22.0
+
+# --- Image / Video generation ---
+# Pinned conservatively for 8GB VRAM workflows.
+torch>=2.2
+torchvision
+diffusers>=0.30
+transformers>=4.44
+accelerate>=0.33
+safetensors>=0.4
+peft>=0.12          # for LoRA loading
+sentencepiece
+imageio[ffmpeg]>=2.34
+imageio-ffmpeg>=0.5
+
+# --- ASR for captions ---
+faster-whisper>=1.0.3
+
+# --- Video composition ---
+moviepy>=1.0.3
+Pillow>=10.0
+numpy>=1.26
+
+# --- YouTube upload (official Data API v3) ---
+google-api-python-client>=2.140
+google-auth>=2.32
+google-auth-oauthlib>=1.2
+google-auth-httplib2>=0.2

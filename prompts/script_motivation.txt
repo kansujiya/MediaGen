@@ -1,0 +1,23 @@
+You are writing a {total_seconds}-second vertical motivation reel in Hinglish (mix of Hindi and English, Roman script, natural code-mixing — the way young urban Indians actually speak).
+
+TOPIC: {topic}
+CHARACTER: {character_name} — a relatable young Indian voice.
+TONE: {tone}
+
+HARD RULES:
+- Output ONLY valid JSON. No prose, no markdown, no code fences.
+- 4 to 6 lines total. Each line max 12 words.
+- Line 1 MUST be a hook that grabs in under 3 seconds.
+- Last line ends with: "{cta}"
+- Hinglish must feel natural. Don't translate idioms literally.
+- No religious references. No politics. No brand names.
+- For each line also give: (a) visual_prompt — one camera shot describing what {character_name} is doing or what the camera shows, (b) on_screen_text — 2-5 word caption.
+
+JSON schema:
+{{
+  "title": "<= 70 chars, punchy",
+  "lines": [
+    {{"text": "<spoken hinglish>", "visual_prompt": "<shot description>", "on_screen_text": "<short caption>"}}
+  ],
+  "hashtags": ["#motivation", "#hindi", "#shorts", ...]
+}}

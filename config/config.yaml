@@ -1,0 +1,54 @@
+## Global config. Override per-genre in config/genres/<genre>.yaml.
+
+reel:
+  duration_sec: 30          # target final length
+  resolution: [720, 1280]   # 9:16 vertical
+  fps: 24
+
+llm:
+  provider: ollama
+  model: qwen2.5:7b         # or llama3.1:8b, mistral:7b
+  temperature: 0.8
+
+tts:
+  engine: xtts              # xtts | piper
+  xtts_model: tts_models/multilingual/multi-dataset/xtts_v2
+  # path to a 6-10s clean voice sample for cloning; one per character.
+  default_speaker_wav: characters/motivation/voice_ref.wav
+  language: hi              # xtts hint; Hinglish: keep 'hi', the model handles mixed text
+
+image:
+  pipeline: sdxl            # sdxl | sd15
+  sdxl_model: stabilityai/stable-diffusion-xl-base-1.0
+  sd15_model: runwayml/stable-diffusion-v1-5
+  steps: 25
+  cfg: 6.5
+  # enable model_cpu_offload + vae_tiling for 8GB VRAM
+  low_vram: true
+
+video:
+  pipeline: ltx             # ltx | cogvideox2b | image_kenburns
+  ltx_model: Lightricks/LTX-Video
+  cogvideox_model: THUDM/CogVideoX-2b
+  num_frames: 81            # ~3-4s at 24fps for LTX
+  width: 704
+  height: 1216
+  low_vram: true
+
+captions:
+  enabled: true
+  whisper_model: small      # tiny | base | small | medium
+  burn_in: true
+  max_chars_per_line: 28
+
+audio:
+  bgm_volume_db: -22        # background music quieter than voice
+  music_dir: assets/music   # drop royalty-free tracks here
+
+upload:
+  youtube:
+    enabled: true
+    category_id: "22"       # People & Blogs
+    tags_extra: [shorts, motivation, hindi, hinglish]
+  instagram:
+    enabled: false          # manual upload for now
