@@ -16,6 +16,8 @@ tts:
   # path to a 6-10s clean voice sample for cloning; one per character.
   default_speaker_wav: characters/motivation/voice_ref.wav
   language: hi              # xtts hint; Hinglish: keep 'hi', the model handles mixed text
+  # Used only when voice_ref.wav is absent — keeps zero-asset runs working.
+  fallback_speaker: Ana Florence
 
 image:
   pipeline: sdxl            # sdxl | sd15

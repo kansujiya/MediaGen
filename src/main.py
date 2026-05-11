@@ -37,10 +37,13 @@ def run(topic: str, genre: str, do_upload: bool, video_backend: str | None) -> P
 
     speaker_wav = Path(cfg["_genre"]["character"]["voice_ref_wav"])
     if not speaker_wav.exists():
-        raise FileNotFoundError(
-            f"Voice reference wav missing: {speaker_wav}. "
-            f"Record/download a 6-10s clean clip and place it there."
+        log.warning(
+            "Voice reference %s missing — falling back to built-in XTTS "
+            "speaker %r. Add a 6-10s clean recording at that path to clone "
+            "your own character voice.",
+            speaker_wav, cfg["tts"].get("fallback_speaker"),
         )
+        speaker_wav = None
 
     log.info("Synthesizing voiceover…")
     voice_paths = synth_lines(
