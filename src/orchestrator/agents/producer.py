@@ -31,10 +31,12 @@ def run(cfg: dict, script: dict) -> dict:
         generate_shot(ln["visual_prompt"], out, cfg, seed=1000 + i)
         shot_pngs.append(out)
 
+    total_sec = cfg["_genre"]["script"].get("total_seconds", 15)
+    clip_dur = max(3.0, total_sec / max(len(script["lines"]), 1))
     clip_paths = []
     for i, (png, ln) in enumerate(zip(shot_pngs, script["lines"])):
         out = ws / f"clip_{i:02d}.mp4"
-        make_clip(png, ln["visual_prompt"], out, duration_s=6.0, cfg=cfg)
+        make_clip(png, ln["visual_prompt"], out, duration_s=clip_dur, cfg=cfg)
         clip_paths.append(out)
 
     raw_mp4 = ws / "reel_raw.mp4"

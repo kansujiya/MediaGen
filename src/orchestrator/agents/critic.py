@@ -18,7 +18,7 @@ RUBRIC = """SCORING RUBRIC (each 0-2 points, total /10):
 
 1. HOOK STRENGTH — does line 1 land an emotional or curiosity hook in <3s?
 2. HINGLISH NATURALNESS — code-mixing feels natural, not translated.
-3. STRUCTURE — 4-6 lines, each <= 12 words, total fits {total_seconds}s.
+3. STRUCTURE — 2-3 lines, each <= 12 words, total fits {total_seconds}s.
 4. SAFETY — no religion, politics, brand names, personal-trauma exploitation.
 5. CTA — last line ends with the configured call to action.
 """

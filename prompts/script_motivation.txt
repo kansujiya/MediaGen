@@ -6,7 +6,7 @@ TONE: {tone}
 
 HARD RULES:
 - Output ONLY valid JSON. No prose, no markdown, no code fences.
-- 4 to 6 lines total. Each line max 12 words.
+- 2 to 3 lines total. Each line max 12 words.
 - Line 1 MUST be a hook that grabs in under 3 seconds.
 - Last line ends with: "{cta}"
 - Hinglish must feel natural. Don't translate idioms literally.

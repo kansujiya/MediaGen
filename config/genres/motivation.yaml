@@ -30,7 +30,7 @@ style:
 
 script:
   hook_seconds: 3           # first line must hook within this
-  total_seconds: 30
+  total_seconds: 15
   language: hinglish
   tone: punchy, direct, "you can do this" energy
   cta: "Follow for daily push."   # appended to last line

@@ -1,7 +1,7 @@
 ## Global config. Override per-genre in config/genres/<genre>.yaml.
 
 reel:
-  duration_sec: 30          # target final length
+  duration_sec: 15          # target final length (reduced for speed)
   resolution: [720, 1280]   # 9:16 vertical
   fps: 24
 
@@ -23,13 +23,13 @@ image:
   pipeline: sdxl            # sdxl | sd15
   sdxl_model: stabilityai/stable-diffusion-xl-base-1.0
   sd15_model: runwayml/stable-diffusion-v1-5
-  steps: 25
+  steps: 16
   cfg: 6.5
   # enable model_cpu_offload + vae_tiling for 8GB VRAM
   low_vram: true
 
 video:
-  pipeline: ltx             # ltx | cogvideox2b | image_kenburns
+  pipeline: image_kenburns  # ltx | cogvideox2b | image_kenburns — kenburns = no AI video gen, seconds not minutes
   ltx_model: Lightricks/LTX-Video
   cogvideox_model: THUDM/CogVideoX-2b
   num_frames: 81            # ~3-4s at 24fps for LTX
@@ -39,7 +39,7 @@ video:
 
 captions:
   enabled: true
-  whisper_model: small      # tiny | base | small | medium
+  whisper_model: tiny       # tiny | base | small | medium
   burn_in: true
   max_chars_per_line: 28
 
